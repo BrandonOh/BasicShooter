@@ -17,4 +17,12 @@ public class Coin : MonoBehaviour
     {
         transform.Rotate(0, rotatSpeed, 0, Space.World);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Object.Destroy(gameObject);
+        }
+    }
 }

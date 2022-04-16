@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
     public Transform groundCheck;
-    public Collider charCollider;
+    public GameObject keepScore;
 
     public float speed = 6f;
     public float turnSmoothtime = 0.01f;
     public float gravity = -18.81f;
     public float groundDistance = 0.4f;
     public float jumpHeight = 3f;
+    public int coinsTotal = 0;
     public LayerMask groundMask;
     
     float turnSmoothVelocity;
@@ -50,8 +53,21 @@ public class PlayerMovement : MonoBehaviour
             velocity.y += Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Coin")
+        {
+            coinsTotal++;
+            keepScore.GetComponent<Text>().text = "Score: " + coinsTotal;
+        }
+        if (coinsTotal >= 20)
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+
 }

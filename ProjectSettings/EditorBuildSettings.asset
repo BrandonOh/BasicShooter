@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Survival.unity
+    guid: 6c4807c81ccdeb8489a19d8a2dd356ef
+  - enabled: 1
+    path: Assets/Scenes/Win Screen.unity
+    guid: b090dbcf573ed6842bc5b287e4be827a
   m_configObjects: {}
